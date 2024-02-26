@@ -8,7 +8,7 @@ const supaAnonKey =
 
 const supabase = supa.createClient(supaUrl, supaAnonKey);
 
-// #1. /api/seasons
+// Returns a list of all seasons
 app.get("/api/seasons", async (req, res) => {
   const { data, error } = await supabase.from("seasons").select();
 
@@ -21,7 +21,7 @@ app.get("/api/seasons", async (req, res) => {
 });
 // http://localhost:8080/api/seasons
 
-// #2. /api/circuits
+// Returns a list of all circuits.
 app.get("/api/circuits", async (req, res) => {
   const { data, error } = await supabase.from("circuits").select();
 
@@ -34,7 +34,7 @@ app.get("/api/circuits", async (req, res) => {
 });
 // http://localhost:8080/api/circuits
 
-// #3. /api/circuits/ref
+// Returns the details of a specific circuit by reference
 app.get("/api/circuits/:ref", async (req, res) => {
   const circRef = req.params.ref;
 
@@ -56,7 +56,7 @@ app.get("/api/circuits/:ref", async (req, res) => {
 });
 // http://localhost:8080/api/circuits/monaco
 
-// #4. /api/circuits/season/year
+// Returns the circuits used in a specified season
 app.get("/api/circuits/season/:year", async (req, res) => {
   const seasonYear = req.params.year;
 
@@ -79,7 +79,7 @@ app.get("/api/circuits/season/:year", async (req, res) => {
 });
 // http://localhost:8080/api/circuits/season/202a
 
-// #5. /api/constructors
+// Returns a list of all constructors.
 app.get("/api/constructors", async (req, res) => {
   const { data, error } = await supabase.from("constructors").select();
 
@@ -92,7 +92,7 @@ app.get("/api/constructors", async (req, res) => {
 });
 // http://localhost:8080/Assign1/constructors
 
-// #6. /api/constructors/ref
+// Returns the details of a specific constructor by reference
 app.get("/api/constructors/:ref", async (req, res) => {
   const construRef = req.params.ref;
 
@@ -114,7 +114,7 @@ app.get("/api/constructors/:ref", async (req, res) => {
 });
 //http://localhost:8080/Assign1/constructors/williams
 
-// #7 /api/drivers
+// Returns a list of all drivers.
 app.get("/api/drivers", async (req, res) => {
   const { data, error } = await supabase.from("drivers").select();
 
@@ -127,7 +127,7 @@ app.get("/api/drivers", async (req, res) => {
 });
 //http://localhost:8080/api/drivers
 
-// #8 /api/drivers/ref
+// Returns the details of a specific driver by reference.
 app.get("/api/drivers/:ref", async (req, res) => {
   const drivRef = req.params.ref;
 
@@ -149,7 +149,7 @@ app.get("/api/drivers/:ref", async (req, res) => {
 });
 //http://localhost:8080/api/drivers/hamilton
 
-// #9 api/drivers/search/substring
+// Returns a list of drivers whose surname begins with the provided substring.
 app.get("/api/drivers/search/:substring", async (req, res) => {
   const substr = req.params.substring;
 
@@ -171,7 +171,7 @@ app.get("/api/drivers/search/:substring", async (req, res) => {
 });
 //http://localhost:8080/api/drivers/search/sch
 
-// #10 api/drivers/race/raceId
+// Returns a list of drivers who participated in a specified race.
 app.get("/api/drivers/race/:raceid", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -193,7 +193,7 @@ app.get("/api/drivers/race/:raceid", async (req, res) => {
 });
 //http://localhost:8080/api/drivers/race/1106
 
-// #11 api/races/raceId
+// Returns the details of a specific race by ID.
 app.get("/api/races/:raceid", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -215,7 +215,7 @@ app.get("/api/races/:raceid", async (req, res) => {
 });
 //http://localhost:8080/api/races/1106
 
-// #12 /api/races/season/year
+// Returns a list of races for a specified season.
 app.get("/api/races/season/:year", async (req, res) => {
   const year = req.params.year;
 
@@ -238,7 +238,7 @@ app.get("/api/races/season/:year", async (req, res) => {
 });
 //http://localhost:8080/api/races/season/2020
 
-// #13 /api/races/season/year/round
+// Returns the details of a specific race in a given season and round.
 app.get("/api/races/season/:year/:round", async (req, res) => {
   const yeaR = req.params.year;
   const rounD = req.params.round;
@@ -262,7 +262,7 @@ app.get("/api/races/season/:year/:round", async (req, res) => {
 });
 //http://localhost:8080/api/races/season/2022/4
 
-// #14 /api/races/circuits/ref
+// Returns all races for a given circuit by reference.
 app.get("/api/races/circuits/:ref", async (req, res) => {
   const reF = req.params.ref;
 
@@ -284,6 +284,7 @@ app.get("/api/races/circuits/:ref", async (req, res) => {
 });
 //http://localhost:8080/api/races/circuits/monza
 
+// Returns all races for a given circuit between two years.
 app.get("/api/races/circuits/:ref/season/:start/:end", async (req, res) => {
   const ref = req.params.ref;
   const startYear = req.params.start;
@@ -310,7 +311,7 @@ app.get("/api/races/circuits/:ref/season/:start/:end", async (req, res) => {
 });
 //http://localhost:8080/api/races/circuits/monza/season/2015/2020
 
-// #16 /api/results/raceId
+// Returns the results for a specific race by ID.
 app.get("/api/results/:raceid", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -335,7 +336,7 @@ app.get("/api/results/:raceid", async (req, res) => {
 });
 //http://localhost:8080/Assign1/results/1106
 
-// #17 /api/results/driver/ref
+// Returns all race results for a given driver by reference.
 app.get("/api/results/driver/:ref", async (req, res) => {
   const driverR = req.params.ref;
 
@@ -357,24 +358,31 @@ app.get("/api/results/driver/:ref", async (req, res) => {
 });
 //http://localhost:8080/api/results/driver/hamilton
 
-// NOT DONE YET
-// #18 /api/results/driver/ref/seasons/start/end (still dont work)
-app.get("/api/results/driver/:ref/seasons/:start/end", async (req, res) => {
+// Returns all the results for a given driver between two years.
+app.get("/api/results/driver/:ref/seasons/:start/:end", async (req, res) => {
   const ref = req.params.ref;
   const startYear = req.params.start;
   const endYear = req.params.end;
 
   const { data, error } = await supabase
     .from("results")
-    .select(`drivers !inner (), races !inner ()`)
+    .select(
+      `*, races!inner (round, name, year), drivers!inner(driverRef, code, forename, surname), constructors(constructorRef, name, nationality), status(status)`
+    )
     .eq("drivers.driverRef", ref)
     .gte("races.year", startYear)
     .lte("races.year", endYear);
-  res.send(data);
-});
-//http://localhost:8080/api/results/driver/sainz/seasons/2022/2022
 
-// #19 /api/qualifying/raceId
+  // if data exists
+  if (data.length == 0) {
+    res.send({ error: "Not found" });
+  } else {
+    res.send(data);
+  }
+});
+//http://localhost:8080/api/results/driver/sainz/seasons/2021/2022
+
+// Returns the qualifying results for a specific race by ID
 app.get("/api/qualifying/:raceid", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -399,7 +407,7 @@ app.get("/api/qualifying/:raceid", async (req, res) => {
 });
 //http://localhost:8080/api/qualifying/1106
 
-// #20 /api/standings/raceId/drivers
+// Returns the current season driver standings for a specified race.
 app.get("/api/standings/:raceid/drivers", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -424,7 +432,7 @@ app.get("/api/standings/:raceid/drivers", async (req, res) => {
 });
 //http://localhost:8080/api/standings/1106/drivers
 
-// #21 /api/standings/raceid/constructors
+// Returns the current season constructors standings for a specified race.
 app.get("/api/standings/:raceid/constructors", async (req, res) => {
   const raceId = req.params.raceid;
 
@@ -445,7 +453,7 @@ app.get("/api/standings/:raceid/constructors", async (req, res) => {
     res.send({ error: "Not a valid number" });
   }
 });
-//http://localhost:8080/Assign1/standings/1106/constructors
+//http://localhost:8080/api/standings/1106/constructors
 
 app.listen(8080, () => {
   console.log("listening on port 8080");
