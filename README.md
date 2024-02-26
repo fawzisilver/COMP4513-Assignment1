@@ -2,7 +2,7 @@
 
 ### Assignment #1: Node, SQL (via supabase)
 
-Links:
+Links: <br>
 [`https://happy-obsidian-gastonia.glitch.me/api/seasons`](https://happy-obsidian-gastonia.glitch.me/api/seasons) <br>
 [`http://happy-obsidian-gastonia.glitch.me/api/circuits`](http://happy-obsidian-gastonia.glitch.me/api/circuits) <br>
 [`http://happy-obsidian-gastonia.glitch.me/api/circuits/monza`](http://happy-obsidian-gastonia.glitch.me/api/circuits/monza) <br>
