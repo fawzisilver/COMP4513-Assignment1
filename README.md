@@ -1,5 +1,7 @@
 # COMP 4513 (Winter 2024)
 
+## Author: Isaac Abelida
+
 ### Assignment #1: Node, SQL (via supabase)
 
 Links: <br>
