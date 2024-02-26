@@ -4,9 +4,13 @@
   "description": "",
   "main": "apiCalls.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node apiCalls.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fawzisilver/COMP4513-Assignment1"
+  },
+  "author": "Isaac Abelida",
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.39.7",
